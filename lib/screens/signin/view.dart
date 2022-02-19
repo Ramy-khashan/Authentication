@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../component/button.dart';
 import '../../component/textfielditem.dart';
-import '../signin/view.dart';
+import '../register/view.dart';
 
-class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+class SignInScreen extends StatelessWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: size.shortestSide * .05),
@@ -21,35 +19,17 @@ class RegisterScreen extends StatelessWidget {
             SizedBox(
               height: size.longestSide * .15,
             ),
-            Text("Register",
+            Text("Sign In",
                 style: TextStyle(
                   fontSize: size.shortestSide * .07,
                 ),
-                textAlign: TextAlign.center), SizedBox(
+                textAlign: TextAlign.center),
+            SizedBox(
               height: size.longestSide * .035,
             ),
-            SizedBox(
-              child: Row(
-                children: [
-                  Expanded(
-                      child: TextFieldItem(
-                        size: size,
-                        lable: "Frist Name",
-                      )),
-                  SizedBox(
-                    width: size.shortestSide * .05,
-                  ),
-                  Expanded(
-                      child: TextFieldItem(
-                        size: size,
-                        lable: "Last Name",
-                      )),
-                ],
-              ),
-            ),
+
             TextFieldItem(
-              size: size,
-              lable: "Email",
+              size: size,lable: "Email",
             ),
             TextFieldItem(
               size: size,
@@ -60,7 +40,7 @@ class RegisterScreen extends StatelessWidget {
             ),
             ButtonItem(
               size: size,
-              head: "Registers",
+              head: "Sign In",
               onTap: () {},
               color: Colors.red.shade200,
             ),
@@ -69,7 +49,7 @@ class RegisterScreen extends StatelessWidget {
                 Expanded(child: Divider(color: Colors.white)),
                 Padding(
                   padding:
-                  EdgeInsets.symmetric(horizontal: size.shortestSide * .02),
+                      EdgeInsets.symmetric(horizontal: size.shortestSide * .02),
                   child: Text(
                     "OR",
                     style: TextStyle(fontSize: size.shortestSide * .053),
@@ -77,34 +57,32 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 Expanded(
                     child: Divider(
-                      color: Colors.white,
-                      height: size.longestSide * .08,
-                    ))
+                  color: Colors.white,
+                  height: size.longestSide * .08,
+                ))
               ],
             ),
             ButtonItem(
               size: size,
-              head: "Register With Google",
+              head: "Sign In With Google",
               onTap: () {},
               isWithIcon: true,
               color: Colors.white,
             ),
             SizedBox(
-              height: size.longestSide * .08,
+              height: size.longestSide * .2,
             ),
             Text.rich(
               TextSpan(
                   style: TextStyle(fontSize: size.shortestSide * .045),
                   children: [
-                    const TextSpan(text: "Already Register?\t"),
+                    const TextSpan(text: "Don't have an account?\t"),
                     WidgetSpan(
                       child: InkWell(
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => SignInScreen()));
-                          },
+                          onTap: () {    Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => RegisterScreen()));},
                           child: Text(
-                            "Sign In",
+                            "Register",
                             style: TextStyle(
                                 fontSize: size.shortestSide * .045,
                                 color: Colors.tealAccent),
