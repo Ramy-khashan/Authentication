@@ -25,10 +25,7 @@ class ButtonItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          isWithIcon!?  Icon(
-              Icons.golf_course_outlined,
-              color: Colors.black,
-            ):Text(""),
+          isWithIcon!? Image.asset("images/googleIcon.png",width: size!.shortestSide*.065,):Text(""),
             SizedBox(
               width: size!.shortestSide * .02,
             ),
