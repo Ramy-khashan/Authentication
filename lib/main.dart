@@ -1,6 +1,8 @@
 import 'package:authentication/screens/register/view.dart';
 import 'package:flutter/material.dart';
 
+import 'screens/flashscreen/view.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: RegisterScreen(),
+      home: FlashScreen(),
     );
   }
 }

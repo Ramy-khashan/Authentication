@@ -6,7 +6,7 @@ import '../../component/codetext.dart';
 import 'controller.dart';
 
 class VertifiyScreen extends StatefulWidget {
-  VertifiyScreen({Key? key}) : super(key: key);
+  const VertifiyScreen({Key? key}) : super(key: key);
 
   @override
   State<VertifiyScreen> createState() => _VertifiyScreenState();

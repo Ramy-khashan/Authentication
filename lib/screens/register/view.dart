@@ -1,3 +1,4 @@
+import 'package:authentication/screens/register/controller.dart';
 import 'package:flutter/material.dart';
 
 import '../../classes/validation.dart';
@@ -6,8 +7,15 @@ import '../../component/textfielditem.dart';
 import '../signin/view.dart';
 import '../vertify/viem.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  final controller = RegisterController();
 
   Validation validation = Validation();
 
@@ -27,11 +35,10 @@ class RegisterScreen extends StatelessWidget {
               ),
               Text("Register",
                   style: TextStyle(
-                    letterSpacing: 1,
+                      letterSpacing: 1,
                       fontSize: size.shortestSide * .08,
                       fontWeight: FontWeight.w700,
-                    fontFamily: "head"
-                  ),
+                      fontFamily: "head"),
                   textAlign: TextAlign.center),
               SizedBox(
                 height: size.longestSide * .035,
@@ -63,6 +70,12 @@ class RegisterScreen extends StatelessWidget {
                 valid: (val) => validation.email(val),
               ),
               TextFieldItem(
+                isPassword: true,
+                isSecure: controller.isSecure,
+                onShow: () {
+                  controller.isSecure = !controller.isSecure;
+                  setState(() {});
+                },
                 size: size,
                 lable: "Password",
                 valid: (val) => validation.password(val),
@@ -81,7 +94,7 @@ class RegisterScreen extends StatelessWidget {
                             builder: (context) => VertifiyScreen()));
                   }
                 },
-                color: Colors.red.shade200,
+                color: Colors.orange.shade600,
               ),
               Row(
                 children: [

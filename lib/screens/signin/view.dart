@@ -1,3 +1,5 @@
+import 'package:authentication/screens/signin/controller.dart';
+import 'package:authentication/screens/vertify/viem.dart';
 import 'package:flutter/material.dart';
 
 import '../../classes/validation.dart';
@@ -5,10 +7,17 @@ import '../../component/button.dart';
 import '../../component/textfielditem.dart';
 import '../register/view.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   SignInScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
   Validation validation = Validation();
+
+  final controller = SignInController();
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +50,12 @@ class SignInScreen extends StatelessWidget {
                 valid: (val) => validation.email(val),
               ),
               TextFieldItem(
+                isPassword: true,
+                isSecure: controller.isSecure,
+                onShow: () {
+                  controller.isSecure = !controller.isSecure;
+                  setState(() {});
+                },
                 size: size,
                 lable: "Password",
                 valid: (val) => validation.password(val),
@@ -52,9 +67,14 @@ class SignInScreen extends StatelessWidget {
                 size: size,
                 head: "Sign In",
                 onTap: () {
-                  if (validation.formKey.currentState!.validate()) {}
+                  if (validation.formKey.currentState!.validate()) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => VertifiyScreen()));
+                  }
                 },
-                color: Colors.red.shade200,
+                color: Colors.orange.shade600,
               ),
               Row(
                 children: [
